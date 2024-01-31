@@ -1,0 +1,29 @@
+<div class="container">
+    <h1>Configure your cookie</h1>
+</div>
+<div class="container">
+    <div class="container">
+        <h2>Select cookie base</h2>
+        {{> base-selector}}
+    </div>
+    <div class="container">
+        <h2>Select cookie addons</h2>
+        {{#each allAddons}}
+            {{#if (isNotOnArray @root.cookie.addons this.[0])}}
+        <a href="/configurator/add-addon/{{this.[0]}}">Add {{this.[0]}} for {{this.[1]}} PLN</a>
+                <br>
+                <hr>
+            {{/if}}
+        {{/each}}
+    </div>
+    {{#if cookie.base}}
+            {{> cookie-preview}}
+            {{> addons}}
+        <a href="/order/summary" class="btn"><img src="/images/shopping-cart.png" class="cart-img" alt="">Order now!</a>
+    {{else}}
+        <p>
+            <strong>Please select your base of cookie.</strong>
+            {{> base-selector}}
+        </p>
+    {{/if}}
+</div>

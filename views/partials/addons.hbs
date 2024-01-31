@@ -1,0 +1,14 @@
+<h3>Selected parts of cookie</h3>
+<ul>
+    <li class="selected-base">Base: {{cookie.base}} - {{princify (find-price allBases cookie.base)}} PLN</li>
+    {{#each cookie.addons}}
+        <li>
+            {{#unless ../noDeleteBtn}}
+            <a href="/configurator/delete-addon/{{this}}">Delete</a>
+            {{/unless}}
+            Addon: {{this}} - {{princify (find-price @root.allAddons this)}}PLN
+        </li>
+    {{/each}}
+</ul>
+
+<p class="total-price"><strong>Total of {{princify sum}} PLN</strong></p>
